@@ -93,47 +93,47 @@ const hoursEl = document.getElementById("hours");
 const minsEl = document.getElementById("mins");
 const secsEl = document.getElementById("secs");
 
-function calculateChristmasCountdown() {
+function calculateCountdown() {
     const now = new Date();
-    const currentMonth = now.getMonth() + 1;
-    const currentDay = now.getDate();
-
-    // Figure out the year that the next Christmas will occur on
-    let nextChristmasYear = now.getFullYear();
-    if (currentMonth === 12 && currentDay > 25) {
-        nextChristmasYear += 1;
+    const targetMonth = 11; // Tháng 11 (tháng trong JavaScript bắt đầu từ 0)
+    const targetDay = 22;
+    
+    // Xác định năm của lần 22/11 kế tiếp
+    let targetYear = now.getFullYear();
+    if (now.getMonth() + 1 > targetMonth || (now.getMonth() + 1 === targetMonth && now.getDate() > targetDay)) {
+        targetYear += 1;
     }
 
-    const nextChristmasDate = `Dec 25, ${nextChristmasYear} 0:0:0`;
-    const christmasDate = new Date(nextChristmasDate);
-    const timeLeft = christmasDate - now; // in milliseconds
+    const targetDate = new Date(`${targetMonth}/${targetDay}/${targetYear} 00:00:00`);
+    const timeLeft = targetDate - now; // in milliseconds
 
     let days = 0;
     let hours = 0;
     let mins = 0;
     let secs = 0;
 
-    // Don't calculate the time left if it is Christmas day
-    if (currentMonth !== 12 || (currentMonth === 12 && currentDay !== 25)) {
+    // Chỉ tính thời gian còn lại nếu chưa đến ngày 22/11
+    if (now.getMonth() + 1 !== targetMonth || (now.getMonth() + 1 === targetMonth && now.getDate() !== targetDay)) {
         days = Math.floor(timeLeft / 1000 / 60 / 60 / 24);
         hours = Math.floor(timeLeft / 1000 / 60 / 60) % 24;
         mins = Math.floor(timeLeft / 1000 / 60) % 60;
         secs = Math.floor(timeLeft / 1000) % 60;
     }
+    
     daysEl.innerHTML = days < 10 ? `0${days}` : days;
     hoursEl.innerHTML = hours < 10 ? `0${hours}` : hours;
     minsEl.innerHTML = mins < 10 ? `0${mins}` : mins;
     secsEl.innerHTML = secs < 10 ? `0${secs}` : secs;
 }
 
-setInterval(calculateChristmasCountdown, 1000);
+setInterval(calculateCountdown, 1000);
 
 // You can change global variables here:
 var radius = 240; // how big of the radius
 var autoRotate = true; // auto rotate or not
 var rotateSpeed = -60; // unit: seconds/360 degrees
-var imgWidth = 120; // width of images (unit: px)
-var imgHeight = 170; // height of images (unit: px)
+var imgWidth = 155; // width of images (unit: px)
+var imgHeight = 205; // height of images (unit: px)
 
 // Link of background music - set 'null' if you dont want to play background music
 var bgMusicURL =

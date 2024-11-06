@@ -5,7 +5,7 @@ body {
    margin: 0;
    padding: 0;
    color: #fff;
-   background-image: url(images/background-noel.jpeg);
+   background-image: url(images/background.jpg);
    background-repeat: no-repeat;
    background-size: cover;
    font-family: "Patua One", cursive;
@@ -449,7 +449,7 @@ body {
    top: 0;
    width: 100%;
    height: 100%;
-   line-height: 200px;
+   line-height: 300px;
    font-size: 50px;
    text-align: center;
    -webkit-box-shadow: 0 0 8px #fff;
